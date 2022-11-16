@@ -2,7 +2,7 @@
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import ".styles/DinnerItem.css";
+//import ".styles/DinnerItem.css";
 
 function VariantsExample() {
   return (

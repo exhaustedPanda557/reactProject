@@ -10,7 +10,46 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #666;
+}
+
+.boxImage{
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  margin: 4px;
+}
+
+.foodContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.foodBox{
+  background-color: aliceblue;
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 1px;
+  border-color: #666;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageWrapper{
+  display: flex;
+}
+
+.filterWrapper{
+  background-color: white;
+  width: 10rem;
+  flex: none;
+}
+
+.cartWrapper{
+  background-color: white;
+  width: 15rem;
+  flex: none;
 }
 
 

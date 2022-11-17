@@ -18,6 +18,7 @@
   height: 5rem;
   object-fit: cover;
   margin: 4px;
+  box-shadow: 2px 2px #bbb;
 }
 
 .foodContainer{

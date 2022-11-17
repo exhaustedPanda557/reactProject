@@ -3,7 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import DinnerItem from './DinnerItem';
-import Tomato from './images/pexels-miguel-á-padriñán-255378.jpg';
+import Tomato from './images/tomato.jpg';
+import Zucchini from './images/zucchini.jpg';
+import Broccoli from './images/broccoli.jpg';
+import Apple from './images/apples.jpg';
+import Chicken from './images/chicken.jpg';
+import Salmon from './images/salmon.jpg';
+import Focaccia from './images/focaccia.jpg';
+import Pasta from './images/pasta.jpg';
+import Rice from './images/rice.jpg';
+import Hummus from './images/hummus.jpg';
+import Mayo from './images/mayo.jpg';
+import RedSauce from './images/redSauce.jpg';
 
 
 function App() {
@@ -11,17 +22,17 @@ function App() {
   const [dinner, setDinner] = useState([]);
   const productList = [
     { name: "Tomato", calories: 22, status: "expiring soon", category: "fruit/vegetable", prepTime: 5, image: Tomato },
-    { name: "Zucchini", calories: 33, status: "new", category: "fruit/vegetable", prepTime: 15, image: Tomato },
-    { name: "Broccoli", calories: 50, status: "expiring soon", category: "fruit/vegetable", prepTime: 10, image: Tomato },
-    { name: "Granny Smith Apple", calories: 54, status: "new", category: "fruit/vegetable", prepTime: 2, image: Tomato },
-    { name: "Chicken", calories: 335, status: "new", category: "meat", prepTime: 15, image: Tomato },
-    { name: "Salmon", calories: 412, status: "expiring soon", category: "meat", prepTime: 10, image: Tomato },
-    { name: "Focaccia", calories: 142, status: "expiring soon", category: "grain", prepTime: 2, image: Tomato },
-    { name: "Pasta", calories: 131, status: "new", category: "grain", prepTime: 10, image: Tomato },
-    { name: "White Rice", calories: 206, status: "new", category: "grain", prepTime: 15, image: Tomato },
-    { name: "Hummus", calories: 25, status: "expiring soon", category: "sauce", prepTime: 1, image: Tomato },
-    { name: "Chipotle Mayo", calories: 35, status: "new", category: "sauce", prepTime: 1, image: Tomato },
-    { name: "Tomato Sauce", calories: 70, status: "expiring soon", category: "sauce", prepTime: 5, image: Tomato }
+    { name: "Zucchini", calories: 33, status: "new", category: "fruit/vegetable", prepTime: 15, image: Zucchini },
+    { name: "Broccoli", calories: 50, status: "expiring soon", category: "fruit/vegetable", prepTime: 10, image: Broccoli },
+    { name: "Granny Smith Apple", calories: 54, status: "new", category: "fruit/vegetable", prepTime: 2, image: Apple },
+    { name: "Chicken", calories: 335, status: "new", category: "meat", prepTime: 15, image: Chicken },
+    { name: "Salmon", calories: 412, status: "expiring soon", category: "meat", prepTime: 10, image: Salmon },
+    { name: "Focaccia", calories: 142, status: "expiring soon", category: "grain", prepTime: 2, image: Focaccia },
+    { name: "Pasta", calories: 131, status: "new", category: "grain", prepTime: 10, image: Pasta },
+    { name: "White Rice", calories: 206, status: "new", category: "grain", prepTime: 15, image: Rice },
+    { name: "Hummus", calories: 25, status: "expiring soon", category: "sauce", prepTime: 1, image: Hummus },
+    { name: "Chipotle Mayo", calories: 35, status: "new", category: "sauce", prepTime: 1, image: Mayo },
+    { name: "Tomato Sauce", calories: 70, status: "expiring soon", category: "sauce", prepTime: 5, image: RedSauce }
   ];
   const [filteredProducts, updateFilteredProducts] = useState(productList);
   

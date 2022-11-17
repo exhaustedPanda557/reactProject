@@ -61,7 +61,7 @@ function App() {
       totalPrepTime = totalPrepTime + prepTime;
     })
     return (
-      <div>Total prep time is {totalPrepTime} minutes</div>
+      <div>{totalPrepTime} minutes</div>
     )
   }
   // const filteredFoodArray = array.filter((item) => {
@@ -110,20 +110,24 @@ function App() {
           <div className="filterWrapper">
             <button onClick={() => filterAlphabetically()}>Filter A-Z</button>
           </div>
+          <div className='foodSection'>
+          <h2>Here's what is in your fridge:</h2>
           <div className="foodContainer">
             {filteredProducts.map(data => <DinnerItem data={data} setDinner={setDinner} dinner={dinner} />)}
           </div>
+          </div>
           <div className='cartWrapper'>
+            <h2>Here's your dinner recipe</h2>
             <div>
             {dinner.map(name =>
-              <div>
-                {name}
+              <div className='cartItem'>
+                <h6>{name}</h6>
                 <button onClick={() => removeItem(name)}>Remove Food Item</button>
               </div>
               )}
             </div>
             <div>
-              <p>Total Prep Minutes: <PrepTime /> </p>
+              <h5>Total Prep Minutes: <PrepTime /> </h5>
             </div>
           </div>
         </div>

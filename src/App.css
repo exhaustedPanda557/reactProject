@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background: lightblue;
+  background: #ccc;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,17 +24,21 @@
 .foodContainer{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .foodBox{
-  background-color: aliceblue;
+  background-color: whitesmoke;
   margin: 1rem;
   padding: 0.5rem;
   border: 1px;
-  border-color: #666;
+  border-color: rgb(125, 180, 228);
   border-style: solid;
   display: flex;
   flex-direction: column;
+  width: 15rem;
+  justify-content: center;
+  
 }
 
 .pageWrapper{
@@ -42,15 +46,64 @@
 }
 
 .filterWrapper{
-  background-color: white;
+  background-color: rgb(125, 180, 228);
   width: 10rem;
   flex: none;
 }
 
 .cartWrapper{
-  background-color: white;
+  background-color: rgb(125, 180, 228);
   width: 15rem;
   flex: none;
 }
 
+p{
+  font-size: medium;
+}
 
+.descriptionLabels{
+  color:rgb(25, 106, 178);
+  font-weight: bold;
+}
+
+.itemOverview{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+h3{
+  font-size: 24px;
+}
+
+h5{
+  font-size: 18px;
+  color:black;
+}
+
+.cartItem{
+  justify-content: space-around;
+}
+
+h6{
+  color: rgb(14, 67, 113);
+  font-size: 18px;
+  margin-block-start: 1px;
+  margin-block-end: 1px;
+}
+
+h2{
+  font-size: 24px;
+  color:black;
+}
+
+.foodSection{
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  font-size: 24px;
+  color: rgb(125, 180, 228);
+}

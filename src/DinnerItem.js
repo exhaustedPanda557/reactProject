@@ -9,15 +9,15 @@ export default function DinnerItem({ data, setDinner, dinner }) {
 
     return (
     <div className="foodBox">
-        <div>
+        <div className="itemOverview">
         <img src={image} className="boxImage" />
         <h3>{name}</h3>
         </div>
         <div>
-        <p>Calories: {calories}</p>
-        <p>Status: {status}</p>
-        <p>Food Category: {category}</p>
-        <p>Prep Time: {prepTime}</p>
+        <p><span className='descriptionLabels'>Calories:</span> {calories}</p>
+        <p><span className='descriptionLabels'>Status: </span> {status}</p>
+        <p><span className='descriptionLabels'>Food Category: </span> {category}</p>
+        <p><span className='descriptionLabels'>Prep Time: </span> {prepTime}</p>
         </div>
         <button onClick={handleClick} value={name}>Add To Dinner Recipe</button>
     </div>)

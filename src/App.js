@@ -18,7 +18,9 @@ import RedSauce from './images/redSauce.jpg';
 
 
 function App() {
-  const [type, setType] = useState("All");
+  const [sortType, setSortType] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
   const [dinner, setDinner] = useState([]);
   const productList = [
     { name: "Tomato", calories: 22, status: "expiring soon", category: "fruit/vegetable", prepTime: 5, image: Tomato },
@@ -37,33 +39,56 @@ function App() {
   const [filteredProducts, updateFilteredProducts] = useState(productList);
 
   const sortByCalories = () => {
-    let updatedFilteredList = [...productList];
+    let updatedFilteredList = [...filteredProducts];
     updatedFilteredList.sort((a, b) => {
       return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
     })
-    updateFilteredProducts(updatedFilteredList)
+    updateFilteredProducts(updatedFilteredList);
+    setSortType("calories");
   }
 
-  const resetCalSort = () => {
-    updateFilteredProducts(productList);
-  }
 
-  const filterByExpiring = () => {
+  const filterByExpiring = (statusText) => {
     let updatedFilteredList = [...productList];
     updatedFilteredList = updatedFilteredList.filter((food) => {
-      return(food.status === "expiring soon");
+      return (food.status === statusText);
+    }).filter((food) => {
+      return (!categoryFilter || food.category === categoryFilter)
     })
-    updateFilteredProducts(updatedFilteredList)
+
+    updateFilteredProducts(updatedFilteredList);
+    setStatusFilter(statusText);
   }
 
-  const filterByFruitsVegs = () => {
+  const filterByFruitsVegs = (categoryText) => {
     let updatedFilteredList = [...productList];
     updatedFilteredList = updatedFilteredList.filter((food) => {
-      return(food.category === "fruit/vegetable");
+      return (food.category === categoryText);
+    }).filter((food) => {
+      return (!statusFilter || food.status === statusFilter);
     })
-    updateFilteredProducts(updatedFilteredList)
+
+    updateFilteredProducts(updatedFilteredList);
+    setCategoryFilter(categoryText);
   }
 
+  const resetStatusFilter = () => {
+    setStatusFilter("");
+    let updatedFilteredList = [...productList];
+    updatedFilteredList = updatedFilteredList.filter((food) => {
+      return (!categoryFilter || food.category === categoryFilter);
+    });
+    updateFilteredProducts(updatedFilteredList);
+  }
+
+  const resetCategoryFilter = () => {
+    setCategoryFilter("");
+    let updatedFilteredList = [...productList];
+    updatedFilteredList = updatedFilteredList.filter((food) => {
+      return (!statusFilter || food.status === statusFilter);
+    });
+    updateFilteredProducts(updatedFilteredList);
+  }
 
   const removeItem = (item) => {
     if (dinner.indexOf(item) > -1) {
@@ -131,14 +156,19 @@ function App() {
         <div className="pageWrapper">
           <div className="filterWrapper">
             <div className='buttonGroup'>
-            <button onClick={() => sortByCalories()}>Sort By Calories</button>
-            <button onClick={() => resetCalSort()}>Reset Sorting by Calories</button>
+              <button onClick={() => sortByCalories()}>Sort By Calories</button>
             </div>
             <div className='buttonGroup'>
-            <button onClick={() => filterByExpiring()}>Filter By Expiring Soon</button>
+              <button style={{ backgroundColor: (statusFilter === "expiring soon" ? "green" : "white"), color: (statusFilter === "expiring soon" ? "white" : "black") }} onClick={() => filterByExpiring("expiring soon")}>Filter By Expiring Soon</button>
+              <button style={{ backgroundColor: (statusFilter === "new" ? "green" : "white"), color: (statusFilter === "new" ? "white" : "black") }} onClick={() => filterByExpiring("new")}>Filter By New</button>
+              <button style={{backgroundColor: (statusFilter === "" ? "white" : "blue"), color: (statusFilter === "" ? "black" : "white")}} onClick={() => resetStatusFilter()}>Reset Filter for Food Status</button>
             </div>
             <div className='buttonGroup'>
-              <button onClick={() => filterByFruitsVegs()}>Filter to Fruits and Vegetables</button>
+              <button style={{ backgroundColor: (categoryFilter === "fruit/vegetable" ? "green" : "white"), color: (categoryFilter === "fruit/vegetable" ? "white" : "black") }} onClick={() => filterByFruitsVegs("fruit/vegetable")}>Filter to Fruits and Vegetables</button>
+              <button style={{ backgroundColor: (categoryFilter === "meat" ? "green" : "white"), color: (categoryFilter === "meat" ? "white" : "black") }} onClick={() => filterByFruitsVegs("meat")}>Filter to Meats</button>
+              <button style={{ backgroundColor: (categoryFilter === "grain" ? "green" : "white"), color: (categoryFilter === "grain" ? "white" : "black") }} onClick={() => filterByFruitsVegs("grain")}>Filter to Grains</button>
+              <button style={{ backgroundColor: (categoryFilter === "sauce" ? "green" : "white"), color: (categoryFilter === "sauce" ? "white" : "black") }} onClick={() => filterByFruitsVegs("sauce")}>Filter to Sauces</button>
+              <button style={{backgroundColor: (categoryFilter === "" ? "white" : "blue"), color: (categoryFilter === "" ? "black" : "white")}} onClick={() => resetCategoryFilter()}>Reset Filter for Food Category</button>
             </div>
           </div>
           <div className="foodContainer">

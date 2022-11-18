@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background: #ccc;
+  background: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,10 +28,11 @@
 }
 
 .foodBox{
-  background-color: whitesmoke;
+  background-color: #fff;
   margin: 1rem;
   padding: 0.5rem;
-  border: 1px;
+  border: 4px;
+  box-shadow: 2px 2px 2px #666;
   border-color: rgb(125, 180, 228);
   border-style: solid;
   display: flex;
@@ -46,15 +47,25 @@
 }
 
 .filterWrapper{
-  background-color: rgb(125, 180, 228);
+  border: 4px;
+  box-shadow: 2px 2px 2px #666;
+  border-color: rgb(27, 124, 53);
+  border-style: solid;
   width: 10rem;
   flex: none;
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
 .cartWrapper{
-  background-color: rgb(125, 180, 228);
+  border: 4px;
+  box-shadow: 2px 2px 2px #666;
+  border-color: rgb(27, 124, 53);
+  border-style: solid;
   width: 15rem;
   flex: none;
+  margin-top: 1rem;
+  margin-right: 1rem;
 }
 
 p{
@@ -98,7 +109,14 @@ h2{
   color:black;
 }
 
-.foodSection{
-  display: flex;
-  flex-direction: column;
+h1{
+  font-family:cursive;
+  font-size: 54px;
+  color:rgb(27, 124, 53);
+  font-weight: bolder;
+  text-shadow: 2px 2px 2px #666;
+}
+
+.fridgeHeader{
+  border: 4px 4px 4px #666;
 }

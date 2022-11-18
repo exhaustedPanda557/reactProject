@@ -35,11 +35,11 @@ function App() {
     { name: "Tomato Sauce", calories: 70, status: "expiring soon", category: "sauce", prepTime: 5, image: RedSauce }
   ];
   const [filteredProducts, updateFilteredProducts] = useState(productList);
-  
-  const filterAlphabetically = () => {
+
+  const sortByCalories = () => {
     let updatedFilteredList = [...productList];
     updatedFilteredList.sort((a, b) => {
-      return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
+      return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
     })
     updateFilteredProducts(updatedFilteredList)
   }
@@ -55,7 +55,7 @@ function App() {
   const PrepTime = () => {
     let totalPrepTime = 0;
     dinner.forEach((item) => {
-      let dinnerItem = productList.find(obj => {console.log(obj); return obj.name == item})
+      let dinnerItem = productList.find(obj => { console.log(obj); return obj.name == item })
       console.log(dinnerItem)
       let prepTime = dinnerItem.prepTime;
       totalPrepTime = totalPrepTime + prepTime;
@@ -106,24 +106,22 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Welcome to your fridge:</h1>
         <div className="pageWrapper">
           <div className="filterWrapper">
-            <button onClick={() => filterAlphabetically()}>Filter A-Z</button>
+            <button onClick={() => sortByCalories()}>Sort By Calories</button>
           </div>
-          <div className='foodSection'>
-          <h2>Here's what is in your fridge:</h2>
           <div className="foodContainer">
             {filteredProducts.map(data => <DinnerItem data={data} setDinner={setDinner} dinner={dinner} />)}
-          </div>
           </div>
           <div className='cartWrapper'>
             <h2>Here's your dinner recipe</h2>
             <div>
-            {dinner.map(name =>
-              <div className='cartItem'>
-                <h6>{name}</h6>
-                <button onClick={() => removeItem(name)}>Remove Food Item</button>
-              </div>
+              {dinner.map(name =>
+                <div className='cartItem'>
+                  <h6>{name}</h6>
+                  <button onClick={() => removeItem(name)}>Remove Food Item</button>
+                </div>
               )}
             </div>
             <div>

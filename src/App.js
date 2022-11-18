@@ -130,12 +130,15 @@ function App() {
         <h1>Welcome to your fridge:</h1>
         <div className="pageWrapper">
           <div className="filterWrapper">
-            <div>
+            <div className='buttonGroup'>
             <button onClick={() => sortByCalories()}>Sort By Calories</button>
             <button onClick={() => resetCalSort()}>Reset Sorting by Calories</button>
             </div>
-            <div>
+            <div className='buttonGroup'>
             <button onClick={() => filterByExpiring()}>Filter By Expiring Soon</button>
+            </div>
+            <div className='buttonGroup'>
+              <button onClick={() => filterByFruitsVegs()}>Filter to Fruits and Vegetables</button>
             </div>
           </div>
           <div className="foodContainer">

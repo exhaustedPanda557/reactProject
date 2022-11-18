@@ -44,6 +44,27 @@ function App() {
     updateFilteredProducts(updatedFilteredList)
   }
 
+  const resetCalSort = () => {
+    updateFilteredProducts(productList);
+  }
+
+  const filterByExpiring = () => {
+    let updatedFilteredList = [...productList];
+    updatedFilteredList = updatedFilteredList.filter((food) => {
+      return(food.status === "expiring soon");
+    })
+    updateFilteredProducts(updatedFilteredList)
+  }
+
+  const filterByFruitsVegs = () => {
+    let updatedFilteredList = [...productList];
+    updatedFilteredList = updatedFilteredList.filter((food) => {
+      return(food.category === "fruit/vegetable");
+    })
+    updateFilteredProducts(updatedFilteredList)
+  }
+
+
   const removeItem = (item) => {
     if (dinner.indexOf(item) > -1) {
       let updatedDinner = [...dinner];
@@ -109,7 +130,13 @@ function App() {
         <h1>Welcome to your fridge:</h1>
         <div className="pageWrapper">
           <div className="filterWrapper">
+            <div>
             <button onClick={() => sortByCalories()}>Sort By Calories</button>
+            <button onClick={() => resetCalSort()}>Reset Sorting by Calories</button>
+            </div>
+            <div>
+            <button onClick={() => filterByExpiring()}>Filter By Expiring Soon</button>
+            </div>
           </div>
           <div className="foodContainer">
             {filteredProducts.map(data => <DinnerItem data={data} setDinner={setDinner} dinner={dinner} />)}

@@ -1,13 +1,15 @@
 # Development
 
 ### Link to Deployed Website
-If you used the stencil code, this is `https://<your GitHub username>.github.io/<name of your repository>`
+https://exhaustedpanda557.github.io/reactProject/
 
 ### Goal and Value of the Application
-The goal of this application is to help a user manage their fridge and select dinner that takes into account a balanced diet and food waste. Users can filter by a food's status (filter to just expiring soon) to make sure that they are using items that are expiring soon. Additionally, a user can filter by food category (filter to just fruits/vegetables) to help users easily find the vegetables. Lastly, users can sort by calories to help users make healthy choices about ingredients. 
+The goal of this application is to help a user manage their fridge and select dinner that takes into account a balanced diet and food waste. Users can filter by a food's status (filter to "expiring soon" or "new") to make sure that they are using items that are expiring soon or remember what is most fresh. Additionally, a user can filter by food category (filter to "fruit/vegetable," "meat," "grain," or "sauce") to help users create a balanced plate. Lastly, users can sort by calories to help users make healthy choices about ingredients. 
 
 ### Usability Principles Considered
-I kept the filter section at a fixed width.... the food boxes are housed in a flex display to ensure that the page is responsive and the boxes have a fixed width so that the information can be quickly scanned due to a uniform display
+I made the food items in a flex display while keeping the filter and cart boxes at a fixed width with no flex tom ake the page responsive while making sure that a user could always clearly see the filter and cart boxes at a uniform dimension while allowing all of the boxes to be seen without getting cut off on a smaller screen. 
+
+I made the filter and sort buttons such that when a filter/sort button 
 
 ### Organization of Components
 The list of data is being mapped into DinnerItem.js components, which live within the App.js component. ADD DESCRIPTION OF HOW THE CONTAINERS FOR THE CART AND FILTER ARE NESTED WITHIN EACH OTHER

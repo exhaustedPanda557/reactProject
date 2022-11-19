@@ -58,6 +58,7 @@ function App() {
 
     updateFilteredProducts(updatedFilteredList);
     setStatusFilter(statusText);
+    setSortType("");
   }
 
   const filterByFruitsVegs = (categoryText) => {
@@ -70,6 +71,7 @@ function App() {
 
     updateFilteredProducts(updatedFilteredList);
     setCategoryFilter(categoryText);
+    setSortType("");
   }
 
   const resetStatusFilter = () => {
@@ -79,6 +81,7 @@ function App() {
       return (!categoryFilter || food.category === categoryFilter);
     });
     updateFilteredProducts(updatedFilteredList);
+    setSortType("");
   }
 
   const resetCategoryFilter = () => {
@@ -88,6 +91,7 @@ function App() {
       return (!statusFilter || food.status === statusFilter);
     });
     updateFilteredProducts(updatedFilteredList);
+    setSortType("");
   }
 
   const removeItem = (item) => {
@@ -110,53 +114,16 @@ function App() {
       <div>{totalPrepTime} minutes</div>
     )
   }
-  // const filteredFoodArray = array.filter((item) => {
-  //   return item.status = "expiring soon";
-  // })
 
-  // const sortedArray = array.sort((a,b) => {
-  //   return a.calories - b.calories;
-  // })
-
-  // const keyArray = array.map((item) => {
-  //   return item.name;
-  // })
-
-  // function addToDinner(item){
-  //   const newDinner = {...dinner};
-  //   newDinner[item] = (newDinner[item] || 0) + 1;
-  //   setDinner(newDinner);
-  // }
-
-  // function addToList(item) {
-  //   const newList = [...list, item];
-  //   StyleSheetList(newList);
-  // }
-
-  // <Nav.Item><Nav.Link eventKey="All" onSelect={selectFilterType}>All</Nav.Link></Nav.Item>
-
-  // const selectFilterType = eventKey => {
-  //   setType(eventKey);
-  // }
-  // const matchesFilterType = item => {
-  //   if(type === "All") {
-  //     return true
-  //   } else if (type === item.type) {
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
-
-  // const filteredData = bakeryData.filter(myFitlerFunction)
   return (
     <div className="App">
       <header className="App-header">
         <h1>Welcome to your fridge:</h1>
         <div className="pageWrapper">
           <div className="filterWrapper">
+            <h2>Sort or filter the food items</h2>
             <div className='buttonGroup'>
-              <button onClick={() => sortByCalories()}>Sort By Calories</button>
+              <button style={{backgroundColor: (sortType === "calories" ? "green" : "white"), color: (sortType === "calories" ? "white" : "black")}} onClick={() => sortByCalories()}>Sort By Calories</button>
             </div>
             <div className='buttonGroup'>
               <button style={{ backgroundColor: (statusFilter === "expiring soon" ? "green" : "white"), color: (statusFilter === "expiring soon" ? "white" : "black") }} onClick={() => filterByExpiring("expiring soon")}>Filter By Expiring Soon</button>
@@ -175,7 +142,7 @@ function App() {
             {filteredProducts.map(data => <DinnerItem data={data} setDinner={setDinner} dinner={dinner} />)}
           </div>
           <div className='cartWrapper'>
-            <h2>Here's your dinner recipe</h2>
+            <h2 style={{marginBottom: "1rem"}}>Here's your dinner recipe</h2>
             <div>
               {dinner.map(name =>
                 <div className='cartItem'>

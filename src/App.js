@@ -119,44 +119,44 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Welcome to your fridge:</h1>
-        <div className="pageWrapper">
-          <div className="filterWrapper">
-            <h2>Sort or filter the food items</h2>
-            <div className='buttonGroup'>
-              <button style={{backgroundColor: (sortType === "calories" ? "green" : "white"), color: (sortType === "calories" ? "white" : "black")}} onClick={() => sortByCalories()}>Sort By Calories</button>
-            </div>
-            <div className='buttonGroup'>
-              <button style={{ backgroundColor: (statusFilter === "expiring soon" ? "green" : "white"), color: (statusFilter === "expiring soon" ? "white" : "black") }} onClick={() => filterByExpiring("expiring soon")}>Filter By Expiring Soon</button>
-              <button style={{ backgroundColor: (statusFilter === "new" ? "green" : "white"), color: (statusFilter === "new" ? "white" : "black") }} onClick={() => filterByExpiring("new")}>Filter By New</button>
-              <button style={{backgroundColor: (statusFilter === "" ? "white" : "blue"), color: (statusFilter === "" ? "black" : "white")}} onClick={() => resetStatusFilter()}>Reset Filter for Food Status</button>
-            </div>
-            <div className='buttonGroup'>
-              <button style={{ backgroundColor: (categoryFilter === "fruit/vegetable" ? "green" : "white"), color: (categoryFilter === "fruit/vegetable" ? "white" : "black") }} onClick={() => filterByFruitsVegs("fruit/vegetable")}>Filter to Fruits and Vegetables</button>
-              <button style={{ backgroundColor: (categoryFilter === "meat" ? "green" : "white"), color: (categoryFilter === "meat" ? "white" : "black") }} onClick={() => filterByFruitsVegs("meat")}>Filter to Meats</button>
-              <button style={{ backgroundColor: (categoryFilter === "grain" ? "green" : "white"), color: (categoryFilter === "grain" ? "white" : "black") }} onClick={() => filterByFruitsVegs("grain")}>Filter to Grains</button>
-              <button style={{ backgroundColor: (categoryFilter === "sauce" ? "green" : "white"), color: (categoryFilter === "sauce" ? "white" : "black") }} onClick={() => filterByFruitsVegs("sauce")}>Filter to Sauces</button>
-              <button style={{backgroundColor: (categoryFilter === "" ? "white" : "blue"), color: (categoryFilter === "" ? "black" : "white")}} onClick={() => resetCategoryFilter()}>Reset Filter for Food Category</button>
-            </div>
+      </header>
+      <div className="pageWrapper">
+        <div className="filterWrapper">
+          <h2>Sort or filter the food items</h2>
+          <div className='buttonGroup'>
+            <button style={{ backgroundColor: (sortType === "calories" ? "green" : "white"), color: (sortType === "calories" ? "white" : "black") }} onClick={() => sortByCalories()}>Sort By Calories</button>
           </div>
-          <div className="foodContainer">
-            {filteredProducts.map(data => <DinnerItem data={data} setDinner={setDinner} dinner={dinner} />)}
+          <div className='buttonGroup'>
+            <button style={{ backgroundColor: (statusFilter === "expiring soon" ? "green" : "white"), color: (statusFilter === "expiring soon" ? "white" : "black") }} onClick={() => filterByExpiring("expiring soon")}>Filter By Expiring Soon</button>
+            <button style={{ backgroundColor: (statusFilter === "new" ? "green" : "white"), color: (statusFilter === "new" ? "white" : "black") }} onClick={() => filterByExpiring("new")}>Filter By New</button>
+            <button style={{ backgroundColor: (statusFilter === "" ? "white" : "blue"), color: (statusFilter === "" ? "black" : "white") }} onClick={() => resetStatusFilter()}>Reset Filter for Food Status</button>
           </div>
-          <div className='cartWrapper'>
-            <h2 style={{marginBottom: "1rem"}}>Here's your dinner recipe</h2>
-            <div>
-              {dinner.map(name =>
-                <div className='cartItem'>
-                  <h6>{name}</h6>
-                  <button onClick={() => removeItem(name)}>Remove Food Item</button>
-                </div>
-              )}
-            </div>
-            <div>
-              <h5>Total Prep Minutes: <PrepTime /> </h5>
-            </div>
+          <div className='buttonGroup'>
+            <button style={{ backgroundColor: (categoryFilter === "fruit/vegetable" ? "green" : "white"), color: (categoryFilter === "fruit/vegetable" ? "white" : "black") }} onClick={() => filterByFruitsVegs("fruit/vegetable")}>Filter to Fruits and Vegetables</button>
+            <button style={{ backgroundColor: (categoryFilter === "meat" ? "green" : "white"), color: (categoryFilter === "meat" ? "white" : "black") }} onClick={() => filterByFruitsVegs("meat")}>Filter to Meats</button>
+            <button style={{ backgroundColor: (categoryFilter === "grain" ? "green" : "white"), color: (categoryFilter === "grain" ? "white" : "black") }} onClick={() => filterByFruitsVegs("grain")}>Filter to Grains</button>
+            <button style={{ backgroundColor: (categoryFilter === "sauce" ? "green" : "white"), color: (categoryFilter === "sauce" ? "white" : "black") }} onClick={() => filterByFruitsVegs("sauce")}>Filter to Sauces</button>
+            <button style={{ backgroundColor: (categoryFilter === "" ? "white" : "blue"), color: (categoryFilter === "" ? "black" : "white") }} onClick={() => resetCategoryFilter()}>Reset Filter for Food Category</button>
           </div>
         </div>
-      </header>
+        <div className="foodContainer">
+          {filteredProducts.map(data => <DinnerItem data={data} setDinner={setDinner} dinner={dinner} />)}
+        </div>
+        <div className='cartWrapper'>
+          <h2 style={{ marginBottom: "1rem" }}>Here's your dinner recipe</h2>
+          <div>
+            {dinner.map(name =>
+              <div className='cartItem'>
+                <h6>{name}</h6>
+                <button onClick={() => removeItem(name)}>Remove {name} Item</button>
+              </div>
+            )}
+          </div>
+          <div>
+            <h5>Total Prep Minutes: <PrepTime /> </h5>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

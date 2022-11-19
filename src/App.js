@@ -61,7 +61,7 @@ function App() {
     setSortType("");
   }
 
-  const filterByFruitsVegs = (categoryText) => {
+  const filterByCategory = (categoryText) => {
     let updatedFilteredList = [...productList];
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (food.category === categoryText);
@@ -132,10 +132,10 @@ function App() {
             <button style={{ backgroundColor: (statusFilter === "" ? "white" : "blue"), color: (statusFilter === "" ? "black" : "white") }} onClick={() => resetStatusFilter()}>Reset Filter for Food Status</button>
           </div>
           <div className='buttonGroup'>
-            <button style={{ backgroundColor: (categoryFilter === "fruit/vegetable" ? "green" : "white"), color: (categoryFilter === "fruit/vegetable" ? "white" : "black") }} onClick={() => filterByFruitsVegs("fruit/vegetable")}>Filter to Fruits and Vegetables</button>
-            <button style={{ backgroundColor: (categoryFilter === "meat" ? "green" : "white"), color: (categoryFilter === "meat" ? "white" : "black") }} onClick={() => filterByFruitsVegs("meat")}>Filter to Meats</button>
-            <button style={{ backgroundColor: (categoryFilter === "grain" ? "green" : "white"), color: (categoryFilter === "grain" ? "white" : "black") }} onClick={() => filterByFruitsVegs("grain")}>Filter to Grains</button>
-            <button style={{ backgroundColor: (categoryFilter === "sauce" ? "green" : "white"), color: (categoryFilter === "sauce" ? "white" : "black") }} onClick={() => filterByFruitsVegs("sauce")}>Filter to Sauces</button>
+            <button style={{ backgroundColor: (categoryFilter === "fruit/vegetable" ? "green" : "white"), color: (categoryFilter === "fruit/vegetable" ? "white" : "black") }} onClick={() => filterByCategory("fruit/vegetable")}>Filter to Fruits and Vegetables</button>
+            <button style={{ backgroundColor: (categoryFilter === "meat" ? "green" : "white"), color: (categoryFilter === "meat" ? "white" : "black") }} onClick={() => filterByCategory("meat")}>Filter to Meats</button>
+            <button style={{ backgroundColor: (categoryFilter === "grain" ? "green" : "white"), color: (categoryFilter === "grain" ? "white" : "black") }} onClick={() => filterByCategory("grain")}>Filter to Grains</button>
+            <button style={{ backgroundColor: (categoryFilter === "sauce" ? "green" : "white"), color: (categoryFilter === "sauce" ? "white" : "black") }} onClick={() => filterByCategory("sauce")}>Filter to Sauces</button>
             <button style={{ backgroundColor: (categoryFilter === "" ? "white" : "blue"), color: (categoryFilter === "" ? "black" : "white") }} onClick={() => resetCategoryFilter()}>Reset Filter for Food Category</button>
           </div>
         </div>

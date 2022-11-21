@@ -42,6 +42,24 @@ function App() {
     if(typeOfSort === "calories"){
       setSortType(typeOfSort);
     }
+    // let updatedFilteredList = [...filteredProducts];
+    // if (sortType === "calories"){
+    //   updatedFilteredList.sort((a, b) => {
+    //     return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
+    //   })
+    // }
+    // updateFilteredProducts(updatedFilteredList);
+  }
+
+  function getSortedProducts(lst) {
+    if (sortType === "calories"){
+      lst.sort((a, b) => {
+        return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
+      })
+    }
+    return lst
+  }
+  useEffect(() => {
     let updatedFilteredList = [...filteredProducts];
     if (sortType === "calories"){
       updatedFilteredList.sort((a, b) => {
@@ -49,7 +67,7 @@ function App() {
       })
     }
     updateFilteredProducts(updatedFilteredList);
-  }
+  }, [sortType])
 
 
   const filterByExpiring = (statusText) => {
@@ -89,6 +107,7 @@ function App() {
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (!categoryFilter || food.category === categoryFilter);
     });
+    updatedFilteredList = getSortedProducts(updatedFilteredList);
     updateFilteredProducts(updatedFilteredList);
   }
 
@@ -101,6 +120,7 @@ function App() {
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (!statusFilter || food.status === statusFilter);
     });
+    updatedFilteredList = getSortedProducts(updatedFilteredList);
     updateFilteredProducts(updatedFilteredList);
   }
 

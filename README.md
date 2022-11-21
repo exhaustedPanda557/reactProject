@@ -37,5 +37,5 @@ The filter and sort buttons when clicked call functions that use the state varia
 
 When the "Sort By Calories" button is clicked, the sortByCalories function is called, which uses the state variable setter function setSortType to update the state variable sortType to "calories". When a user clicks a filter button to activate or reset a filter, the sorting is removed, so those filter/remove functions use the state variable setter function setSortType to update sortType to the empty string. Whether sortType is "calories" or an empty string is used to set the conditional background color for the sort button.
 
-When the "Filter By Expiring Soon" or "Filter By New" buttons are clicked, 
+When the "Filter By Expiring Soon" or "Filter By New" buttons are clicked, [UPDATE EVERYTHING TO REFLECT THE NEW SETUP]
 

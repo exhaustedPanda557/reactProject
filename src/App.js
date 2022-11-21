@@ -36,20 +36,26 @@ function App() {
     { name: "Chipotle Mayo", calories: 35, status: "new", category: "sauce", prepTime: 1, image: Mayo },
     { name: "Tomato Sauce", calories: 70, status: "expiring soon", category: "sauce", prepTime: 5, image: RedSauce }
   ];
-  const [filteredProducts, updateFilteredProducts] = useState(productList);
+  const [filteredProducts, updateFilteredProducts] = useState([...productList]);
 
-  const sortByCalories = () => {
+  const sortingDetermination = (typeOfSort) => {
+    if(typeOfSort === "calories"){
+      setSortType(typeOfSort);
+    }
     let updatedFilteredList = [...filteredProducts];
-    updatedFilteredList.sort((a, b) => {
-      return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
-    })
+    if (sortType === "calories"){
+      updatedFilteredList.sort((a, b) => {
+        return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
+      })
+    }
     updateFilteredProducts(updatedFilteredList);
-    setSortType("calories");
   }
 
 
   const filterByExpiring = (statusText) => {
-    let updatedFilteredList = [...productList];
+    let typeOfSort = sortType;
+    sortingDetermination(typeOfSort);
+    let updatedFilteredList = [...filteredProducts];
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (food.status === statusText);
     }).filter((food) => {
@@ -58,11 +64,12 @@ function App() {
 
     updateFilteredProducts(updatedFilteredList);
     setStatusFilter(statusText);
-    setSortType("");
   }
 
   const filterByCategory = (categoryText) => {
-    let updatedFilteredList = [...productList];
+    let typeOfSort = sortType;
+    sortingDetermination(typeOfSort);
+    let updatedFilteredList = [...filteredProducts];
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (food.category === categoryText);
     }).filter((food) => {
@@ -71,27 +78,30 @@ function App() {
 
     updateFilteredProducts(updatedFilteredList);
     setCategoryFilter(categoryText);
-    setSortType("");
   }
 
   const resetStatusFilter = () => {
-    setStatusFilter("");
     let updatedFilteredList = [...productList];
+    updateFilteredProducts(updatedFilteredList);
+    setStatusFilter("");
+    let typeOfSort = sortType;
+    sortingDetermination(typeOfSort);
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (!categoryFilter || food.category === categoryFilter);
     });
     updateFilteredProducts(updatedFilteredList);
-    setSortType("");
   }
 
   const resetCategoryFilter = () => {
-    setCategoryFilter("");
     let updatedFilteredList = [...productList];
+    updateFilteredProducts(updatedFilteredList)
+    setCategoryFilter("");
+    let typeOfSort = sortType;
+    sortingDetermination(typeOfSort);
     updatedFilteredList = updatedFilteredList.filter((food) => {
       return (!statusFilter || food.status === statusFilter);
     });
     updateFilteredProducts(updatedFilteredList);
-    setSortType("");
   }
 
   const removeItem = (item) => {
@@ -124,7 +134,7 @@ function App() {
         <div className="filterWrapper">
           <h2>Sort or filter the food items</h2>
           <div className='buttonGroup'>
-            <button style={{ backgroundColor: (sortType === "calories" ? "green" : "white"), color: (sortType === "calories" ? "white" : "black") }} onClick={() => sortByCalories()}>Sort By Calories</button>
+            <button style={{ backgroundColor: (sortType === "calories" ? "green" : "white"), color: (sortType === "calories" ? "white" : "black") }} onClick={() => sortingDetermination("calories")}>Sort By Calories</button>
           </div>
           <div className='buttonGroup'>
             <button style={{ backgroundColor: (statusFilter === "expiring soon" ? "green" : "white"), color: (statusFilter === "expiring soon" ? "white" : "black") }} onClick={() => filterByExpiring("expiring soon")}>Filter By Expiring Soon</button>

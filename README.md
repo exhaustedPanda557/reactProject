@@ -25,7 +25,7 @@ For the dinner recipe, the name of food items and the button to remove them from
 The foodContainer, filterWrapper, and cartWrapper are all housed within a div with className pageWrapper. The div with className AppHeader houses the title of the page, and the div with className App houses both the AppHeader and the pageWrapper divs. 
 
 ### How Data is Passed Down Through Components
-The main App.js component is passing the data through a map function to a DinnerItem component through props (specifically, data, setDinner, and dinner). In a DinnerItem component, name, calories, status, category, prepTime, and image variables are created from data. Within the DinnerItem component, the setDinner updates dinner and back in App.js, the PrepTime function references dinner to get the prepTime associated with each food item name in dinner and sum all of the prepTimes of the food names in dinner. In App.js, the dinner recipe cart displays the food names in dinner.
+The main App.js component is passing the data through a map function to a DinnerItem component through props (specifically, data, setDinner, and dinner). In a DinnerItem component, name, calories, status, category, prepTime, and image variables are created from data, which are then displayed in the foodBox's descriptionLabels. Within the DinnerItem component, the setDinner updates dinner and back in App.js, the PrepTime function references dinner to get the prepTime associated with each food item name in dinner and sum all of the prepTimes of the food names in dinner. In App.js, the dinner recipe cart displays the food names in dinner.
 
 ### How the User Triggers State Changes
 

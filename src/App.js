@@ -1,5 +1,4 @@
 // I used the Development Gear Up 2022 Slides for help https://docs.google.com/presentation/d/1ASwznypedampMtpiC4rjqE2CZVu9UNTSThBdshUNYvM/edit#slide=id.g18d33a59644_9_125
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import DinnerItem from './DinnerItem';
@@ -42,13 +41,6 @@ function App() {
     if(typeOfSort === "calories"){
       setSortType(typeOfSort);
     }
-    // let updatedFilteredList = [...filteredProducts];
-    // if (sortType === "calories"){
-    //   updatedFilteredList.sort((a, b) => {
-    //     return (a.calories < b.calories) ? -1 : (a.calories > b.calories) ? 1 : 0;
-    //   })
-    // }
-    // updateFilteredProducts(updatedFilteredList);
   }
 
   function getSortedProducts(lst) {
